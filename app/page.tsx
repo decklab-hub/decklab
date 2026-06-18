@@ -1,13 +1,17 @@
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-black via-blue-950 to-zinc-950 text-zinc-50">
+      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-12 sm:px-8 lg:px-12">
         <div className="flex flex-1 flex-col justify-center gap-10 py-12 lg:py-20">
           <div className="max-w-3xl space-y-6">
             <p className="inline-flex rounded-full border border-zinc-700 bg-white/5 px-4 py-1 text-sm text-zinc-300 shadow-sm shadow-black/20">
               Niezależny serwis dla DJs
             </p>
-            <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1
+              className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl"
+              style={{ fontFamily: 'Hanken Grotesk, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto' }}
+            >
               DeckLab
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
