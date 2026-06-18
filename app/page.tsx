@@ -5,7 +5,7 @@ export default function Home() {
         <div className="flex flex-1 flex-col justify-center gap-10 py-12 lg:py-20">
           <div className="max-w-3xl space-y-6">
             <p className="inline-flex rounded-full border border-zinc-700 bg-white/5 px-4 py-1 text-sm text-zinc-300 shadow-sm shadow-black/20">
-              DJ gear. Testy. Porównania.
+              Niezależny serwis dla DJs
             </p>
             <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
               DeckLab
@@ -97,7 +97,7 @@ export default function Home() {
                 Autorzy serwisu są związani z DJ-ingiem i sprzętem muzycznym od 2009 roku. DeckLab powstał, aby dzielić się wiedzą, publikować rzetelne testy oraz pomagać DJ-om wybierać sprzęt bez marketingowego szumu.
               </p>
               <p className="leading-7">
-                Publikujemy testy, porównania, rankingi i praktyczne poradniki dla początkujących oraz bardziej zaawansowanych DJ-ów.
+                Publikujemy testy, porównania, rankingi i praktyczne poradniki dla początkujących oraz bardziej zaawansowanych DJs.
               </p>
             </div>
           </div>
