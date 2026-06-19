@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DeckLab | Testy i przewodniki po sprzęcie DJ-skim.",
+  title: "DeckLab | Testy sprzętu DJ-skiego, rankingi i poradniki",
   description: "Testy, porównania i praktyczne poradniki dotyczące kontrolerów, mixerów, gramofonów i akcesoriów dla DJ-ów.",
   verification: {
     google: "1mMaLeuViNBUHC89fBzv-dcdGJfkeAKLy_tpKLm4jok",
