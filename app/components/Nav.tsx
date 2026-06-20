@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -18,8 +19,15 @@ export default function Nav() {
   return (
     <header className="fixed left-0 right-0 z-40 bg-transparent backdrop-blur-sm border-b border-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 sm:px-8 lg:px-12">
-        <Link href="#" className="text-base font-semibold text-white">
-          DeckLab
+        <Link href="#" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="DeckLab"
+            width={70}
+            height={14}
+            className="h-3.5 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-4 md:flex">
