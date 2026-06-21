@@ -1,9 +1,10 @@
+import Image from "next/image";
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-black via-blue-950 to-zinc-950 text-zinc-50">
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-12 sm:px-8 lg:px-12">
-        <div className="flex flex-1 flex-col justify-center gap-10 py-12 lg:py-20">
+        <div className="relative flex flex-1 flex-col justify-center gap-10 py-12 lg:py-20">
           <div className="max-w-3xl space-y-6">
             <p className="inline-flex rounded-full border border-zinc-700 bg-white/5 px-4 py-1 text-sm text-zinc-300 shadow-sm shadow-black/20">
               Niezależny serwis dla DJs
@@ -18,39 +19,35 @@ export default function Home() {
               Testy, porównania i przewodniki po sprzęcie DJ-skim.
             </p>
           </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                title: "🎛️ Sprzęt",
-                description: "Poznaj kontrolery, odtwarzacze, miksery i słuchawki.",
-              },
-              {
-                title: "⚖️ Porównania",
-                description: "Sprawdź różnice między popularnymi modelami.",
-              },
-              {
-                title: "🏆 Rankingi",
-                description: "Zobacz najlepszy sprzęt w różnych budżetach.",
-              },
-              {
-                title: "📚 Poradniki",
-                description: "Dowiedz się, jak wybrać swój pierwszy setup.",
-              },
-            ].map((card) => (
-              <article
-                key={card.title}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.7)] transition duration-300 hover:-translate-y-1 hover:border-zinc-600/60 hover:bg-white/8"
-              >
-                <h2 className="text-xl font-semibold text-white">
-                  {card.title}
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-zinc-400">
-                  {card.description}
-                </p>
-              </article>
-            ))}
+          <div className="hidden lg:block absolute right-[-300px] top-[60%] -translate-y-1/2 w-[980px]">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[650px] w-[650px] rounded-full bg-cyan-400/15 blur-[240px]"></div>
+            <div className="absolute left-[55%] top-[55%] -translate-x-1/2 -translate-y-1/2 -z-10 h-[800px] w-[800px] rounded-full bg-blue-500/8 blur-[300px]"></div>
+              <Image
+                src="/images/hero/cdj3000-djm-a9.webp"
+                alt="Pioneer DJ CDJ-3000 i mikser DJM-A9"
+                width={1800}
+                height={1200}
+                priority
+                className="w-full h-auto drop-shadow-[0_60px_180px_rgba(59,130,246,0.5)]"
+              />
           </div>
+
+          <div className="flex flex-wrap gap-3">
+  {[
+    "Aktualności",
+    "Testy",
+    "Rankingi",
+    "Porównania",
+    "Poradniki",
+  ].map((item) => (
+    <button
+      key={item}
+      className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-zinc-300 transition hover:border-zinc-500 hover:bg-white/10 hover:text-white"
+    >
+      {item}
+    </button>
+  ))}
+</div>
         </div>
 
         <section className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_40px_80px_-40px_rgba(15,23,42,0.85)] sm:p-8">
