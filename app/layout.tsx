@@ -16,9 +16,39 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "DeckLab | Testy sprzętu DJ-skiego, rankingi i poradniki",
-  description: "Testy, porównania i praktyczne poradniki dotyczące kontrolerów, mixerów, gramofonów i akcesoriów dla DJ-ów.",
+  description:
+    "Testy, porównania i praktyczne poradniki dotyczące kontrolerów, mixerów, gramofonów i akcesoriów dla DJ-ów.",
+
   verification: {
     google: "1mMaLeuViNBUHC89fBzv-dcdGJfkeAKLy_tpKLm4jok",
+  },
+
+  metadataBase: new URL("https://decklab.pl"),
+
+  openGraph: {
+    title: "DeckLab | Testy sprzętu DJ-skiego, rankingi i poradniki",
+    description:
+      "Testy, porównania i praktyczne poradniki dotyczące kontrolerów, mixerów, gramofonów i akcesoriów dla DJ-ów.",
+    url: "https://decklab.pl",
+    siteName: "DeckLab",
+    locale: "pl_PL",
+    type: "website",
+    images: [
+      {
+        url: "/images/og/decklab-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DeckLab",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "DeckLab | Testy sprzętu DJ-skiego, rankingi i poradniki",
+    description:
+      "Testy, porównania i praktyczne poradniki dotyczące kontrolerów, mixerów, gramofonów i akcesoriów dla DJ-ów.",
+    images: ["/images/og/decklab-og.jpg"],
   },
 };
 

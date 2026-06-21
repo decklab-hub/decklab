@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-black via-blue-950 to-zinc-950 text-zinc-50">
+    <main className="min-h-screen bg-gradient-to-r from-black to-[#183f7a] text-zinc-50">
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-12 sm:px-8 lg:px-12">
         <div className="relative flex flex-1 flex-col justify-center gap-10 py-12 lg:py-20">
