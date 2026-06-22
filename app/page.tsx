@@ -3,36 +3,36 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-r from-black to-[#183f7a] text-zinc-50">
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-12 sm:px-8 lg:px-12">
-        <div className="relative flex flex-1 flex-col justify-center gap-10 py-12 lg:py-20">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-13 sm:px-8 lg:px-12">
+        <div className="relative flex flex-col gap-10 py-12 lg:py-16">
+          <div className="absolute inset-0 overflow-hidden rounded-[3rem]">
+            <Image
+              src="/images/hero/hero-home.webp"
+              alt="DeckLab Hero"
+              fill
+              priority
+              className="object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/10 to-transparent"></div>
+          </div>
+        <div className="relative z-10">
           <div className="max-w-3xl space-y-6">
             <p className="inline-flex rounded-full border border-zinc-700 bg-white/5 px-4 py-1 text-sm text-zinc-300 shadow-sm shadow-black/20">
               Niezależny serwis dla DJs
             </p>
             <h1
-              className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl"
-              style={{ fontFamily: 'Hanken Grotesk, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto' }}
-            >
-              DeckLab
+              className="max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl"
+              style={{
+                fontFamily:
+                'Hanken Grotesk, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto',
+              }}
+                  >
+                Testy, porównania i przewodniki po sprzęcie DJ-skim.
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
-              Testy, porównania i przewodniki po sprzęcie DJ-skim.
-            </p>
-          </div>
-          <div className="hidden lg:block absolute right-[-300px] top-[60%] -translate-y-1/2 w-[980px]">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[650px] w-[650px] rounded-full bg-cyan-400/15 blur-[240px]"></div>
-            <div className="absolute left-[55%] top-[55%] -translate-x-1/2 -translate-y-1/2 -z-10 h-[800px] w-[800px] rounded-full bg-blue-500/8 blur-[300px]"></div>
-              <Image
-                src="/images/hero/cdj3000-djm-a9.webp"
-                alt="Pioneer DJ CDJ-3000 i mikser DJM-A9"
-                width={1800}
-                height={1200}
-                priority
-                className="w-full h-auto drop-shadow-[0_60px_180px_rgba(59,130,246,0.5)]"
-              />
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="mt-26 flex flex-wrap gap-2">
   {[
     "Aktualności",
     "Testy",
@@ -42,49 +42,129 @@ export default function Home() {
   ].map((item) => (
     <button
       key={item}
-      className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-zinc-300 transition hover:border-zinc-500 hover:bg-white/10 hover:text-white"
+      className="rounded-full border border-white/10 bg-white/5 px-5 py-1 text-sm text-zinc-300 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-100 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]"
     >
       {item}
     </button>
   ))}
 </div>
         </div>
+</div>
+<section className="mt-6">
+  <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-        <section className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_40px_80px_-40px_rgba(15,23,42,0.85)] sm:p-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm uppercase tracking-[0.24em] text-zinc-500">
-                Hity w DeckLab
-              </p>
-              <h2 className="mt-2 text-3xl font-semibold text-white sm:text-4xl">
-                Najciekawsze artykuły i testy
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-7 text-zinc-400 sm:text-base">
-              Przegląd najbardziej popularnych materiałów, które pomogą znaleźć najlepszy sprzęt, porównać modele i wybrać idealny kontroler.
-            </p>
-          </div>
+    <article className="group space-y-4">
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {[
-              "AlphaTheta DDJ-FLX4",
-              "FLX4 vs FLX6",
-              "Najlepszy kontroler DJ do 3000 zł",
-            ].map((item) => (
-              <article
-                key={item}
-                className="rounded-3xl border border-white/10 bg-zinc-950/80 p-5 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-zinc-500/50"
-              >
-                <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
-                  Hity
-                </p>
-                <h3 className="mt-4 text-lg font-semibold text-white">
-                  {item}
-                </h3>
-              </article>
-            ))}
-          </div>
-        </section>
+  {/* obrazek */}
+  <div className="relative aspect-video overflow-hidden rounded-3xl">
+    <Image
+      src="/images/articles/alphatheta-ddj-flx4-test.webp"
+      alt="AlphaTheta DDJ-FLX4"
+      fill
+      className="object-cover transition duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  {/* meta */}
+  <div className="flex items-center gap-3 text-sm">
+    <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
+      TEST
+    </span>
+
+    <span className="text-zinc-500">
+      22 czerwca 2026
+    </span>
+  </div>
+
+  {/* tytuł */}
+  <h2 className="text-2xl font-semibold leading-tight text-white">
+    AlphaTheta DDJ-FLX4
+  </h2>
+
+  {/* opis */}
+  <p className="max-w-xl leading-7 text-zinc-400">
+    Sprawdzamy jeden z najpopularniejszych kontrolerów dla początkujących DJ-ów i oceniamy, czy nadal warto go kupić.
+  </p>
+
+  <a
+    href="#"
+    className="text-sm font-medium text-blue-300 hover:text-blue-200"
+  >
+    Czytaj →
+  </a>
+
+</article>
+
+<article className="group space-y-4">
+<div className="relative aspect-video overflow-hidden rounded-3xl">
+<Image
+  src="/images/articles/flx4-vs-flx6.webp"
+  alt="FLX4 vs FLX6"
+  fill
+  className="object-cover transition duration-500 group-hover:scale-105"
+/>
+</div>
+
+<div className="flex items-center gap-3 text-sm">
+  <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
+    PORÓWNANIE
+  </span>
+  <span className="text-zinc-500">20 czerwca 2026</span>
+</div>
+
+<h2 className="text-2xl font-semibold leading-tight text-white">
+  FLX4 vs FLX6
+</h2>
+
+<p className="max-w-xl leading-7 text-zinc-400">
+  Porównujemy dwa popularne kontrolery AlphaTheta i sprawdzamy, dla kogo lepszym wyborem będzie FLX4, a dla kogo FLX6.
+</p>
+
+<a
+  href="#"
+  className="text-sm font-medium text-blue-300 hover:text-blue-200"
+>
+  Czytaj →
+</a>
+
+</article>
+
+<article className="group space-y-4">
+<div className="relative aspect-video overflow-hidden rounded-3xl">
+<Image
+  src="/images/articles/najlepszy-kontroler-dj-do-3000-zl.webp"
+  alt="Najlepszy kontroler DJ do 3000 zł"
+  fill
+  className="object-cover transition duration-500 group-hover:scale-105"
+/>
+</div>
+
+<div className="flex items-center gap-3 text-sm">
+  <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
+    RANKING
+  </span>
+  <span className="text-zinc-500">18 czerwca 2026</span>
+</div>
+
+<h2 className="text-2xl font-semibold leading-tight text-white">
+  Najlepszy kontroler DJ do 3000 zł
+</h2>
+
+<p className="max-w-xl leading-7 text-zinc-400">
+  Zebraliśmy najciekawsze modele dla początkujących i średniozaawansowanych DJ-ów w budżecie do 3000 zł.
+</p>
+
+<a
+  href="#"
+  className="text-sm font-medium text-blue-300 hover:text-blue-200"
+>
+  Czytaj →
+</a>
+
+</article>
+
+  </div>
+</section>
 
         <section className="mt-20 grid gap-12 md:grid-cols-2">
           <div className="flex flex-col gap-6">
