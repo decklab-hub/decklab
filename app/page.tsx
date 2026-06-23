@@ -212,12 +212,12 @@ export default function Home() {
                 </ul>
               </div>
               <p className="leading-7 pt-2">
-                Jeśli masz pomysł na ciekawy materiał, chcesz udostępnić sprzęt do testów lub po prostu skontaktować się z nami, napisz na adres <a href="mailto:kontakt@decklab.pl" className="font-semibold text-white hover:text-zinc-300 transition">kontakt@decklab.pl</a>.
+                Masz pomysł na materiał, chcesz przekazać sprzęt do testów lub po prostu porozmawiać? Odezwij się do nas.
               </p>
               <div className="pt-4">
                 <a
                   href="mailto:kontakt@decklab.pl"
-                  className="inline-flex rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-zinc-200"
+                  className="inline-flex rounded-full bg-white px-6 py-2 font-semibold text-black transition hover:bg-zinc-200"
                 >
                   Napisz do nas
                 </a>
