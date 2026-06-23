@@ -5,7 +5,7 @@ export default function Home() {
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-13 sm:px-8 lg:px-12">
         <div className="relative flex flex-col gap-10 py-12 lg:py-16">
-          <div className="absolute inset-0 overflow-hidden rounded-[3rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-xl">
             <Image
               src="/images/hero/hero-home.webp"
               alt="DeckLab Hero"
@@ -56,7 +56,7 @@ export default function Home() {
     <article className="group space-y-4">
 
   {/* obrazek */}
-  <div className="relative aspect-video overflow-hidden rounded-3xl">
+  <div className="relative aspect-video overflow-hidden rounded-lg">
     <Image
       src="/images/articles/alphatheta-ddj-flx4-test.webp"
       alt="AlphaTheta DDJ-FLX4"
@@ -96,7 +96,7 @@ export default function Home() {
 </article>
 
 <article className="group space-y-4">
-<div className="relative aspect-video overflow-hidden rounded-3xl">
+<div className="relative aspect-video overflow-hidden rounded-lg">
 <Image
   src="/images/articles/flx4-vs-flx6.webp"
   alt="FLX4 vs FLX6"
@@ -130,7 +130,7 @@ export default function Home() {
 </article>
 
 <article className="group space-y-4">
-<div className="relative aspect-video overflow-hidden rounded-3xl">
+<div className="relative aspect-video overflow-hidden rounded-lg">
 <Image
   src="/images/articles/najlepszy-kontroler-dj-do-3000-zl.webp"
   alt="Najlepszy kontroler DJ do 3000 zł"
@@ -191,7 +191,7 @@ export default function Home() {
             </div>
             <div className="space-y-4 text-zinc-400">
               <p className="leading-7">
-                Masz pytanie dotyczące sprzętu lub chcesz nawiązać współpracę?
+                Masz pomysł na materiał, chcesz przekazać sprzęt do testów lub nawiązać współpracę?
               </p>
               <div>
                 <a
@@ -211,9 +211,6 @@ export default function Home() {
                   <li>• propozycje tematów i sugestie artykułów.</li>
                 </ul>
               </div>
-              <p className="leading-7 pt-2">
-                Masz pomysł na materiał, chcesz przekazać sprzęt do testów lub po prostu porozmawiać? Odezwij się do nas.
-              </p>
               <div className="pt-4">
                 <a
                   href="mailto:kontakt@decklab.pl"
