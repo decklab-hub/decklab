@@ -1,5 +1,17 @@
+import { client } from "@/sanity/lib/client";
+import { articlesQuery } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
-export default function Home() {
+
+const articleTypeLabels: Record<string, string> = {
+  news: "AKTUALNOŚĆ",
+  review: "TEST",
+  comparison: "PORÓWNANIE",
+  ranking: "RANKING",
+  guide: "PORADNIK",
+};
+export default async function Home() {
+  const articles = await client.fetch(articlesQuery);
   return (
     <main className="min-h-screen bg-gradient-to-r from-black to-[#183f7a] text-zinc-50">
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -53,115 +65,53 @@ export default function Home() {
 <section className="mt-6">
   <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-    <article className="group space-y-4">
+    {articles.map((article) => (
+      <article key={article._id} className="group space-y-4">
 
-  {/* obrazek */}
-  <div className="relative aspect-video overflow-hidden rounded-lg">
-    <Image
-      src="/images/articles/alphatheta-ddj-flx4-test.webp"
-      alt="AlphaTheta DDJ-FLX4"
-      fill
-      className="object-cover transition duration-500 group-hover:scale-105"
-    />
-  </div>
+        {/* obrazek */}
+        <div className="relative aspect-video overflow-hidden rounded-lg">
+          <Image
+            src={urlFor(article.mainImage.image).width(800).height(450).url()}
+            alt={article.mainImage.alt}
+            fill
+            className="object-cover transition duration-500 group-hover:scale-105"
+          />
+        </div>
 
-  {/* meta */}
-  <div className="flex items-center gap-3 text-sm">
-    <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
-      TEST
-    </span>
+        {/* meta */}
+        <div className="flex items-center gap-3 text-sm">
+          <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
+            {articleTypeLabels[article.articleType] ?? article.articleType}
+          </span>
 
-    <span className="text-zinc-500">
-      22 czerwca 2026
-    </span>
-  </div>
+          <span className="text-zinc-500">
+            {new Date(article.publishedAt).toLocaleDateString("pl-PL", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </span>
+        </div>
 
-  {/* tytuł */}
-  <h2 className="text-2xl font-semibold leading-tight text-white">
-    AlphaTheta DDJ-FLX4
-  </h2>
+        {/* tytuł */}
+        <h2 className="text-2xl font-semibold leading-tight text-white">
+          {article.title}
+        </h2>
 
-  {/* opis */}
-  <p className="max-w-xl leading-7 text-zinc-400">
-    Sprawdzamy jeden z najpopularniejszych kontrolerów dla początkujących DJ-ów i oceniamy, czy nadal warto go kupić.
-  </p>
+        {/* opis */}
+        <p className="max-w-xl leading-7 text-zinc-400">
+          {article.excerpt}
+        </p>
 
-  <a
-    href="#"
-    className="text-sm font-medium text-blue-300 hover:text-blue-200"
-  >
-    Czytaj →
-  </a>
+        <a
+          href={`/artykuly/${article.slug.current}`}
+          className="text-sm font-medium text-blue-300 hover:text-blue-200"
+        >
+          Czytaj →
+        </a>
 
-</article>
-
-<article className="group space-y-4">
-<div className="relative aspect-video overflow-hidden rounded-lg">
-<Image
-  src="/images/articles/flx4-vs-flx6.webp"
-  alt="FLX4 vs FLX6"
-  fill
-  className="object-cover transition duration-500 group-hover:scale-105"
-/>
-</div>
-
-<div className="flex items-center gap-3 text-sm">
-  <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
-    PORÓWNANIE
-  </span>
-  <span className="text-zinc-500">20 czerwca 2026</span>
-</div>
-
-<h2 className="text-2xl font-semibold leading-tight text-white">
-  FLX4 vs FLX6
-</h2>
-
-<p className="max-w-xl leading-7 text-zinc-400">
-  Porównujemy dwa popularne kontrolery AlphaTheta i sprawdzamy, dla kogo lepszym wyborem będzie FLX4, a dla kogo FLX6.
-</p>
-
-<a
-  href="#"
-  className="text-sm font-medium text-blue-300 hover:text-blue-200"
->
-  Czytaj →
-</a>
-
-</article>
-
-<article className="group space-y-4">
-<div className="relative aspect-video overflow-hidden rounded-lg">
-<Image
-  src="/images/articles/najlepszy-kontroler-dj-do-3000-zl.webp"
-  alt="Najlepszy kontroler DJ do 3000 zł"
-  fill
-  className="object-cover transition duration-500 group-hover:scale-105"
-/>
-</div>
-
-<div className="flex items-center gap-3 text-sm">
-  <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
-    RANKING
-  </span>
-  <span className="text-zinc-500">18 czerwca 2026</span>
-</div>
-
-<h2 className="text-2xl font-semibold leading-tight text-white">
-  Najlepszy kontroler DJ do 3000 zł
-</h2>
-
-<p className="max-w-xl leading-7 text-zinc-400">
-  Zebraliśmy najciekawsze modele dla początkujących i średniozaawansowanych DJ-ów w budżecie do 3000 zł.
-</p>
-
-<a
-  href="#"
-  className="text-sm font-medium text-blue-300 hover:text-blue-200"
->
-  Czytaj →
-</a>
-
-</article>
+      </article>
+    ))}
 
   </div>
 </section>
