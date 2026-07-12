@@ -13,9 +13,33 @@ const articleTypeLabels: Record<string, string> = {
 export default async function Home() {
   const articles = await client.fetch(articlesQuery);
   return (
-    <main className="min-h-screen bg-gradient-to-r from-black to-[#183f7a] text-zinc-50">
+    <main className="relative min-h-screen overflow-hidden bg-[#05070d] text-zinc-50">
+
+{/* subtle grain */}
+<div
+  className="pointer-events-none absolute inset-0 opacity-[0.025]"
+  style={{
+    backgroundImage: `
+      radial-gradient(circle at 25% 25%, rgba(255,255,255,.12) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, rgba(255,255,255,.08) 1px, transparent 1px)
+    `,
+    backgroundSize: "12px 12px, 16px 16px",
+  }}
+/>
+
+      <div
+  className="pointer-events-none absolute inset-0"
+  style={{
+    background: `
+  radial-gradient(circle at 92% 8%, rgba(245,158,11,.18), transparent 32%),
+  radial-gradient(circle at 82% 68%, rgba(251,191,36,.08), transparent 40%),
+  radial-gradient(circle at 15% 100%, rgba(245,158,11,.05), transparent 50%)
+    `,
+  }}
+/>
+
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-13 sm:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-13 sm:px-8 lg:px-12">
         <div className="relative flex flex-col gap-10 py-12 lg:py-16">
           <div className="absolute inset-0 overflow-hidden rounded-xl">
             <Image
@@ -28,7 +52,7 @@ export default async function Home() {
 
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/10 to-transparent"></div>
           </div>
-        <div className="relative z-10">
+        <div className="relative z-10 pl-8">
           <div className="max-w-3xl space-y-6">
             <p className="inline-flex rounded-full border border-zinc-700 bg-white/5 px-4 py-1 text-sm text-zinc-300 shadow-sm shadow-black/20">
               Niezależny serwis dla DJs
@@ -62,11 +86,23 @@ export default async function Home() {
 </div>
         </div>
 </div>
-<section className="mt-6">
+<section className="mt-8 rounded-[10px] border border-white/5 bg-white/[0.02] p-8">
   <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
     {articles.map((article: any) => (
-      <article key={article._id} className="group space-y-4">
+      <article
+  key={article._id}
+  className="
+    group
+    space-y-4
+    rounded-2xl
+    p-6
+    transition-all
+    duration-300
+    hover:-translate-y-1
+    hover:bg-white/[0.02]
+  "
+>
 
         {/* obrazek */}
         <div className="relative aspect-video overflow-hidden rounded-lg">
@@ -74,13 +110,31 @@ export default async function Home() {
             src={urlFor(article.mainImage.image).width(800).height(450).url()}
             alt={article.mainImage.alt}
             fill
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="
+  object-cover
+  transition-all
+  duration-500
+  group-hover:scale-105
+  group-hover:brightness-105
+"
           />
         </div>
 
         {/* meta */}
         <div className="flex items-center gap-3 text-sm">
-          <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
+          <span
+  className="
+    rounded-full
+    bg-blue-500/20
+    px-3
+    py-1
+    text-blue-300
+    transition-all
+    duration-300
+    group-hover:bg-blue-500/30
+    group-hover:shadow-[0_0_18px_rgba(59,130,246,.25)]
+  "
+>
             {articleTypeLabels[article.articleType] ?? article.articleType}
           </span>
 
@@ -94,7 +148,7 @@ export default async function Home() {
         </div>
 
         {/* tytuł */}
-        <h2 className="text-2xl font-semibold leading-tight text-white">
+        <h2 className="text-2xl font-semibold leading-tight text-white transition-colors duration-300 group-hover:text-zinc-100">
           {article.title}
         </h2>
 
