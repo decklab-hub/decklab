@@ -65,7 +65,7 @@ export default async function Home() {
 <section className="mt-6">
   <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-    {articles.map((article) => (
+    {articles.map((article: any) => (
       <article key={article._id} className="group space-y-4">
 
         {/* obrazek */}
