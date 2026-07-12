@@ -121,6 +121,9 @@ export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
 
   const article = await client.fetch(articleQuery, { slug })
+  if (!article) {
+  return null
+}
 
   const tableOfContents = getTableOfContents(article.body)
 
