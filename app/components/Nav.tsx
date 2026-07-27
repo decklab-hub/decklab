@@ -65,18 +65,18 @@ export default function Nav() {
         <div className="md:hidden border-t border-white/10 bg-black/40 backdrop-blur-sm">
           <div className="mx-auto max-w-7xl px-6 py-4 sm:px-8 lg:px-12">
             <nav className="flex flex-col gap-2">
-              {items.map((it) => {
+              {categories.map((it) => {
                 const isActive = pathname === it.href;
                 return (
                   <Link
-                    key={it.label}
+                    key={it.href}
                     href={it.href}
                     onClick={() => setOpen(false)}
                     className={`block rounded-full px-3 py-2 text-sm font-medium transition ${
                       isActive ? "bg-white/10 text-white" : "text-white/60 hover:text-white"
                     }`}
                   >
-                    {it.label}
+                    {it.title}
                   </Link>
                 );
               })}
