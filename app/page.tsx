@@ -2,6 +2,9 @@ import { client } from "@/sanity/lib/client";
 import { articlesQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
+import ArticleCard from "@/app/components/ArticleCard"
+import Link from "next/link";
+import { categories } from "@/lib/categories";
 
 const articleTypeLabels: Record<string, string> = {
   news: "AKTUALNOŚĆ",
@@ -68,20 +71,15 @@ export default async function Home() {
             </h1>
           </div>
 
-          <div className="mt-26 flex flex-wrap gap-2">
-  {[
-    "Aktualności",
-    "Testy",
-    "Rankingi",
-    "Porównania",
-    "Poradniki",
-  ].map((item) => (
-    <button
-      key={item}
+         <div className="mt-26 flex flex-wrap gap-2">
+  {categories.map((category) => (
+    <Link
+      key={category.href}
+      href={category.href}
       className="rounded-full border border-white/10 bg-white/5 px-5 py-1 text-sm text-zinc-300 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-100 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]"
     >
-      {item}
-    </button>
+      {category.title}
+    </Link>
   ))}
 </div>
         </div>
@@ -90,82 +88,11 @@ export default async function Home() {
   <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
     {articles.map((article: any) => (
-      <article
-  key={article._id}
-  className="
-    group
-    space-y-4
-    rounded-2xl
-    p-6
-    transition-all
-    duration-300
-    hover:-translate-y-1
-    hover:bg-white/[0.02]
-  "
->
-
-        {/* obrazek */}
-        <div className="relative aspect-video overflow-hidden rounded-lg">
-          <Image
-            src={urlFor(article.mainImage.image).width(800).height(450).url()}
-            alt={article.mainImage.alt}
-            fill
-            className="
-  object-cover
-  transition-all
-  duration-500
-  group-hover:scale-105
-  group-hover:brightness-105
-"
-          />
-        </div>
-
-        {/* meta */}
-        <div className="flex items-center gap-3 text-sm">
-          <span
-  className="
-    rounded-full
-    bg-blue-500/20
-    px-3
-    py-1
-    text-blue-300
-    transition-all
-    duration-300
-    group-hover:bg-blue-500/30
-    group-hover:shadow-[0_0_18px_rgba(59,130,246,.25)]
-  "
->
-            {articleTypeLabels[article.articleType] ?? article.articleType}
-          </span>
-
-          <span className="text-zinc-500">
-            {new Date(article.publishedAt).toLocaleDateString("pl-PL", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </span>
-        </div>
-
-        {/* tytuł */}
-        <h2 className="text-2xl font-semibold leading-tight text-white transition-colors duration-300 group-hover:text-zinc-100">
-          {article.title}
-        </h2>
-
-        {/* opis */}
-        <p className="max-w-xl leading-7 text-zinc-400">
-          {article.excerpt}
-        </p>
-
-        <a
-          href={`/artykuly/${article.slug.current}`}
-          className="text-sm font-medium text-blue-300 hover:text-blue-200"
-        >
-          Czytaj →
-        </a>
-
-      </article>
-    ))}
+  <ArticleCard
+    key={article._id}
+    article={article}
+  />
+))}
 
   </div>
 </section>

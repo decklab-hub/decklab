@@ -1,7 +1,10 @@
-export function getTableOfContents(body: any[]) {
-  if (!body) return []
+export function getTableOfContents(
+  body: any[],
+  extraItems: { level: "h2" | "h3"; title: string }[] = []
+) {
+  if (!body) return extraItems
 
-  return body
+  const items = body
     .filter(
       (block) =>
         block._type === "block" &&
@@ -11,4 +14,6 @@ export function getTableOfContents(body: any[]) {
       level: block.style,
       title: block.children?.map((child: any) => child.text).join("") ?? "",
     }))
+
+  return [...items, ...extraItems]
 }

@@ -108,6 +108,13 @@ export const article = defineType({
     }),
 
     defineField({
+      name: "featuredInCategory",
+      title: "Wyróżnij w kategorii",
+      type: "boolean",
+      initialValue: false,
+    }),
+
+    defineField({
       name: 'products',
       title: 'Products',
       type: 'array',
