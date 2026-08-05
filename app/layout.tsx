@@ -1,17 +1,13 @@
 import Script from "next/script";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-hanken",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -59,9 +55,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+  lang="pl"
+  className={`${hanken.variable} h-full antialiased`}
+>
       <body className="min-h-full flex flex-col">
         <Script
   src="https://www.googletagmanager.com/gtag/js?id=G-11EMLVM76D"

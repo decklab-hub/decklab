@@ -5,6 +5,7 @@ import Image from "next/image";
 import ArticleCard from "@/app/components/ArticleCard"
 import Link from "next/link";
 import { categories } from "@/lib/categories";
+import AnimatedBadge from "@/app/components/AnimatedBadge";
 
 const articleTypeLabels: Record<string, string> = {
   news: "AKTUALNOŚĆ",
@@ -57,9 +58,11 @@ export default async function Home() {
           </div>
         <div className="relative z-10 pl-8">
           <div className="max-w-3xl space-y-6">
-            <p className="inline-flex rounded-full border border-zinc-700 bg-white/5 px-4 py-1 text-sm text-zinc-300 shadow-sm shadow-black/20">
-              Niezależny serwis dla DJs
-            </p>
+            <AnimatedBadge
+  className="bg-white/5 px-4 py-1 text-sm text-zinc-300"
+>
+  Niezależny serwis dla DJs
+</AnimatedBadge>
             <h1
               className="max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl"
               style={{
@@ -143,12 +146,11 @@ export default async function Home() {
                 </ul>
               </div>
               <div className="pt-4">
-                <a
-                  href="mailto:kontakt@decklab.pl"
-                  className="inline-flex rounded-full bg-white px-6 py-2 font-semibold text-black transition hover:bg-zinc-200"
-                >
-                  Napisz do nas
-                </a>
+                <AnimatedBadge
+  className="bg-transparent px-6 py-2 text-base font-semibold text-white hover:bg-white/[0.03] transition-colors duration-300 cursor-pointer"
+>
+  Napisz do nas
+</AnimatedBadge>
               </div>
             </div>
           </div>
