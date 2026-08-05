@@ -146,11 +146,13 @@ export default async function Home() {
                 </ul>
               </div>
               <div className="pt-4">
+                <a href="mailto:kontakt@decklab.pl">
                 <AnimatedBadge
   className="bg-transparent px-6 py-2 text-base font-semibold text-white hover:bg-white/[0.03] transition-colors duration-300 cursor-pointer"
 >
   Napisz do nas
 </AnimatedBadge>
+</a>
               </div>
             </div>
           </div>
