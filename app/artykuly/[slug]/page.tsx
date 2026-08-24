@@ -10,10 +10,10 @@ import { getReadingTime } from "@/lib/readingTime"
 import FAQAccordion from "@/app/components/FAQAccordion"
 import { getTableOfContents } from "@/lib/tableOfContents"
 import TableOfContents from "@/app/components/TableOfContents"
-import Verdict from "@/app/components/Verdict"
 import ProsCons from "@/app/components/ProsCons"
 import RecommendedFor from "@/app/components/RecommendedFor"
 import RelatedArticles from "@/app/components/RelatedArticles"
+import type { Metadata } from "next"
 
 const portableTextComponents = {
   block: {
@@ -110,18 +110,18 @@ const portableTextComponents = {
   },
 
   types: {
-    image: ({ value }: any) => (
-      <div className="my-12 overflow-hidden rounded-2xl">
-        <Image
-          src={urlFor(value).width(1200).url()}
-          alt={value.alt ?? ""}
-          width={1200}
-          height={675}
-          className="w-full object-cover"
-        />
-      </div>
-    ),
-  },
+  imageWithAlt: ({ value }: any) => (
+    <div className="my-12 overflow-hidden rounded-2xl">
+      <Image
+        src={urlFor(value.image).width(1200).url()}
+        alt={value.alt ?? ""}
+        width={1200}
+        height={675}
+        className="w-full object-cover"
+      />
+    </div>
+  ),
+},
 }
 
 type Props = {
@@ -138,6 +138,51 @@ const articleTypeLabels: Record<string, string> = {
   guide: "PORADNIK",
 }
 
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  const { slug } = await params
+
+  const article = await client.fetch(articleQuery, { slug })
+
+  if (!article) {
+    return {}
+  }
+
+  return {
+  title: article.seo?.metaTitle || article.title,
+  description: article.seo?.metaDescription || article.excerpt,
+
+  robots: article.seo?.noIndex
+  ? {
+      index: false,
+      follow: true,
+    }
+  : undefined,
+
+    alternates: {
+    canonical: `https://decklab.pl/artykuly/${slug}`,
+  },
+
+  openGraph: {
+    title: article.seo?.ogTitle || article.title,
+    description: article.seo?.ogDescription || article.excerpt,
+    type: "article",
+    url: `https://decklab.pl/artykuly/${slug}`,
+    images: article.mainImage
+      ? [
+          {
+            url: urlFor(article.mainImage.image).width(1200).height(630).url(),
+            width: 1200,
+            height: 630,
+            alt: article.mainImage.alt || article.title,
+          },
+        ]
+      : undefined,
+  },
+}
+}
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
 
@@ -152,9 +197,41 @@ const relatedArticles = await client.fetch(
 )
 console.log("Related articles:", relatedArticles)
 
-  const tableOfContents = getTableOfContents(article.body, [
-  { level: "h2", title: "Plusy i minusy" },
-])
+ const tableOfContents = [
+  ...getTableOfContents(article.body),
+  ...(article.recommendedFor
+    ? [
+        {
+          level: "h2",
+          title: article.recommendedFor.title,
+        },
+      ]
+    : []),
+]
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.excerpt,
+  image: article.mainImage
+    ? [urlFor(article.mainImage.image).width(1200).height(675).url()]
+    : undefined,
+  datePublished: article.publishedAt,
+  author: {
+    "@type": "Person",
+    name: article.author.name,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "DeckLab",
+    url: "https://decklab.pl",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://decklab.pl/artykuly/${slug}`,
+  },
+}
 
   const productSchema =
   article.products?.length > 0
@@ -188,6 +265,13 @@ console.log("Related articles:", relatedArticles)
 
   return (
   <>
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(articleSchema),
+  }}
+/>
+
     {faqSchema && (
       <script
         type="application/ld+json"
@@ -276,11 +360,12 @@ console.log("Related articles:", relatedArticles)
 </div>
 
 <div className="mt-12">
-  <RecommendedFor />
-</div>
-
-<div className="mt-12">
-  <Verdict />
+  {article.recommendedFor && (
+  <RecommendedFor
+    title={article.recommendedFor.title}
+    content={article.recommendedFor.content}
+  />
+)}
 </div>
 
 <div className="mt-12">

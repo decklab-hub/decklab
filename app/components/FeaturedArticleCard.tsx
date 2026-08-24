@@ -19,10 +19,10 @@ export default function FeaturedArticleCard({ article }: Props) {
     <article className="group grid gap-8 lg:grid-cols-2 lg:items-center">
       <Link
   href={`/artykuly/${article.slug.current}`}
-  className="relative block aspect-[16/10] overflow-hidden rounded-xl"
+  className="relative block aspect-video overflow-hidden rounded-xl"
 >
   <Image
-    src={urlFor(article.mainImage.image).width(1200).height(750).url()}
+    src={urlFor(article.mainImage.image).width(1600).height(900).url()}
     alt={article.mainImage.alt}
     fill
     className="

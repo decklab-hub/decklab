@@ -7,18 +7,24 @@ export const prosCons = defineType({
 
   fields: [
     defineField({
-      name: "pros",
-      title: "Plusy",
-      type: "array",
-      of: [{ type: "string" }],
-    }),
+  name: "pros",
+  title: "Plusy",
+  type: "array",
+  of: [{ type: "string" }],
+  options: {
+    layout: "tags",
+  },
+}),
 
     defineField({
-      name: "cons",
-      title: "Minusy",
-      type: "array",
-      of: [{ type: "string" }],
-    }),
+  name: "cons",
+  title: "Minusy",
+  type: "array",
+  of: [{ type: "string" }],
+  options: {
+    layout: "tags",
+  },
+}),
   ],
 
   preview: {

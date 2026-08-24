@@ -1,4 +1,15 @@
+import type { Metadata } from "next"
 import CategoryPage from "@/app/components/CategoryPage"
+
+export const metadata: Metadata = {
+  title: "Porównania sprzętu DJ-skiego | DeckLab",
+  description:
+    "Porównania sprzętu DJ-skiego, które pomagają wybrać odpowiedni kontroler, mikser, gramofon i inne urządzenia.",
+
+  alternates: {
+    canonical: "https://decklab.pl/porownania",
+  },
+}
 
 export default function PorownaniaPage() {
   return (

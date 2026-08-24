@@ -15,15 +15,14 @@ export default function RelatedArticles({ articles }: Props) {
         Polecane artykuły
       </h2>
 
-      <div className="mt-8 space-y-6">
-        {articles.map((article) => (
-          <ArticleCard
-            key={article._id}
-            article={article}
-            variant="compact"
-          />
-        ))}
-      </div>
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+  {articles.map((article) => (
+    <ArticleCard
+      key={article._id}
+      article={article}
+    />
+  ))}
+</div>
     </section>
   )
 }

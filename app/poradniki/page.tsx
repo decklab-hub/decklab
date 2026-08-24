@@ -1,4 +1,15 @@
+import type { Metadata } from "next"
 import CategoryPage from "@/app/components/CategoryPage"
+
+export const metadata: Metadata = {
+  title: "Poradniki dla DJs | DeckLab",
+  description:
+    "Praktyczne poradniki dla DJs — od wyboru sprzętu i konfiguracji setupu po pierwsze kroki za konsoletą.",
+
+  alternates: {
+    canonical: "https://decklab.pl/poradniki",
+  },
+}
 
 export default function PoradnikiPage() {
   return (

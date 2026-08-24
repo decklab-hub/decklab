@@ -34,8 +34,10 @@ export const articleQuery = groq`
     _id,
     title,
     excerpt,
+    seo,
     body,
     faq,
+    recommendedFor,
     products[]->{
       name,
       model,
@@ -44,6 +46,13 @@ export const articleQuery = groq`
         name
       }
     },
+    seo {
+  metaTitle,
+  metaDescription,
+  ogTitle,
+  ogDescription,
+  noIndex
+},
     publishedAt,
     articleType,
     mainImage,

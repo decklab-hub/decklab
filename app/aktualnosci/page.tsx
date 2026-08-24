@@ -1,4 +1,15 @@
+import type { Metadata } from "next"
 import CategoryPage from "@/app/components/CategoryPage"
+
+export const metadata: Metadata = {
+  title: "Aktualności ze świata DJ | DeckLab",
+  description:
+    "Najnowsze informacje ze świata sprzętu DJ-skiego, oprogramowania i branży DJ-skiej.",
+
+  alternates: {
+    canonical: "https://decklab.pl/aktualnosci",
+  },
+}
 
 export default function AktualnosciPage() {
   return (

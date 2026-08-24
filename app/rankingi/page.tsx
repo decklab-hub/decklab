@@ -1,4 +1,15 @@
+import type { Metadata } from "next"
 import CategoryPage from "@/app/components/CategoryPage"
+
+export const metadata: Metadata = {
+  title: "Rankingi sprzętu DJ-skiego | DeckLab",
+  description:
+    "Rankingi sprzętu DJ-skiego przygotowane na podstawie praktycznych testów, porównań i doświadczenia.",
+
+  alternates: {
+    canonical: "https://decklab.pl/rankingi",
+  },
+}
 
 export default function RankingiPage() {
   return (

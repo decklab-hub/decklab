@@ -1,4 +1,15 @@
+import type { Metadata } from "next"
 import CategoryPage from "@/app/components/CategoryPage"
+
+export const metadata: Metadata = {
+  title: "Testy sprzętu DJ-skiego | DeckLab",
+  description:
+    "Niezależne testy sprzętu DJ-skiego. Sprawdzamy kontrolery, miksery, gramofony i inne urządzenia w praktyce.",
+
+  alternates: {
+    canonical: "https://decklab.pl/testy",
+  },
+}
 
 export default function TestyPage() {
   return (

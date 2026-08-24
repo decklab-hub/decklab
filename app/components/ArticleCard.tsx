@@ -25,48 +25,47 @@ const isCompact = variant === "compact"
 if (isCompact) {
   return (
     <article className="group rounded-xl border border-zinc-800/70 bg-zinc-900/70 p-5 transition-all duration-300 hover:border-zinc-700">
-      <div className="flex gap-5">
-        <div className="relative aspect-[4/3] w-56 shrink-0 overflow-hidden rounded-lg">
-          <Image
-            src={urlFor(article.mainImage.image).width(500).height(375).url()}
-            alt={article.mainImage.alt}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
+      <Link
+        href={`/artykuly/${article.slug.current}`}
+        className="relative block aspect-video overflow-hidden rounded-lg"
+      >
+        <Image
+          src={urlFor(article.mainImage.image).width(1200).height(675).url()}
+          alt={article.mainImage.alt}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </Link>
 
-        <div className="flex flex-1 flex-col">
-          <div className="mb-3 flex items-center gap-3 text-sm">
-            <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
-              {articleTypeLabels[article.articleType] ?? article.articleType}
-            </span>
+      <div className="mt-5 flex items-center gap-3 text-sm">
+        <span className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">
+          {articleTypeLabels[article.articleType] ?? article.articleType}
+        </span>
 
-            <span className="text-zinc-500">
-              {new Date(article.publishedAt).toLocaleDateString("pl-PL", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </span>
-          </div>
+        <span className="text-zinc-500">
+          {new Date(article.publishedAt).toLocaleDateString("pl-PL", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
+        </span>
+      </div>
 
-          <h3 className="text-xl font-semibold leading-tight text-white">
-            {article.title}
-          </h3>
+      <h3 className="mt-3 text-xl font-semibold leading-tight text-white">
+        {article.title}
+      </h3>
 
-          <p className="mt-3 line-clamp-2 text-sm leading-6 text-zinc-400">
-            {article.excerpt}
-          </p>
+      <p className="mt-3 line-clamp-2 text-sm leading-6 text-zinc-400">
+        {article.excerpt}
+      </p>
 
-          <div className="mt-auto pt-4">
-            <Link
-              href={`/artykuly/${article.slug.current}`}
-              className="text-sm font-medium text-blue-300 hover:text-blue-200"
-            >
-              Czytaj →
-            </Link>
-          </div>
-        </div>
+      <div className="mt-4">
+        <Link
+          href={`/artykuly/${article.slug.current}`}
+          className="text-sm font-medium text-blue-300 hover:text-blue-200"
+        >
+          Czytaj →
+        </Link>
       </div>
     </article>
   )

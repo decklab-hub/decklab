@@ -22,6 +22,12 @@ export const article = defineType({
     }),
 
     defineField({
+  name: 'seo',
+  title: 'SEO',
+  type: 'seo',
+}),
+
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -62,6 +68,10 @@ export const article = defineType({
     collapsible: true,
     collapsed: false,
   },
+},
+
+{
+  type: 'imageWithAlt',
 },
 
 ],
@@ -137,6 +147,28 @@ export const article = defineType({
       title: 'Published at',
       type: 'datetime',
     }),
+
+    defineField({
+  name: 'recommendedFor',
+  title: 'Dla kogo?',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Tytuł sekcji',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'content',
+      title: 'Treść',
+      type: 'text',
+      rows: 8,
+      validation: (Rule) => Rule.required(),
+    }),
+  ],
+}),
 
     defineField({
   name: 'faq',
