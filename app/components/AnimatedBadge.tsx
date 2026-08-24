@@ -16,7 +16,6 @@ export default function AnimatedBadge({
   const ref = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
-  const [pathLength, setPathLength] = useState(0);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -35,17 +34,6 @@ export default function AnimatedBadge({
 
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-  console.log("size:", size);
-  console.log("pathRef:", pathRef.current);
-
-  if (!pathRef.current) return;
-
-  console.log("length:", pathRef.current.getTotalLength());
-
-  setPathLength(pathRef.current.getTotalLength());
-}, [size]);
 
   const radius = size.height / 2;
   const beamHeight = 3;
