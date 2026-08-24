@@ -39,12 +39,13 @@ export default function FAQAccordion({ items }: Props) {
   </span>
 
   <span
-    className={`flex h-8 w-8 items-center justify-center rounded-full border border-blue-500/20 text-xl font-light text-blue-400 transition-all duration-300 ${
-  open ? "rotate-45 bg-blue-500/10" : ""
-}`}
-  >
-    +
-  </span>
+  className={`relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-blue-500/20 text-blue-400 transition-all duration-300 ${
+    open ? "rotate-45 bg-blue-500/10" : ""
+  }`}
+>
+  <span className="absolute h-px w-3 bg-blue-400" />
+  <span className="absolute h-3 w-px bg-blue-400" />
+</span>
 </button>
 
               <div

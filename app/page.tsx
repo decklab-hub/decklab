@@ -46,13 +46,14 @@ export default async function Home() {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-13 sm:px-8 lg:px-12">
         <div className="relative flex flex-col gap-10 py-12 lg:py-16">
           <div className="absolute inset-0 overflow-hidden rounded-xl">
-            <Image
-              src="/images/hero/hero-home.webp"
-              alt="DeckLab Hero"
-              fill
-              priority
-              className="object-cover"
-            />
+           <Image
+  src="/images/hero/hero-home.webp"
+  alt="DeckLab Hero"
+  fill
+  priority
+  fetchPriority="high"
+  className="object-cover"
+/>
 
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/10 to-transparent"></div>
           </div>
