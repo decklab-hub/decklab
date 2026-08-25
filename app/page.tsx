@@ -58,9 +58,11 @@ export default async function Home() {
           </div>
         <div className="relative z-10 pl-8">
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex rounded-full bg-white/5 px-4 py-1 text-sm text-zinc-300">
+            <AnimatedBadge
+  className="bg-white/5 px-4 py-1 text-sm text-zinc-300"
+>
   Niezależny serwis dla DJs
-</div>
+</AnimatedBadge>
             <h1
               className="max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl"
               style={{
