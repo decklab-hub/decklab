@@ -61,7 +61,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Script
   src="https://www.googletagmanager.com/gtag/js?id=G-11EMLVM76D"
-  strategy="afterInteractive"
+  strategy="lazyOnload"
 />
 <Script id="google-analytics" strategy="afterInteractive">
   {`
