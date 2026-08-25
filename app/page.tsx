@@ -42,7 +42,6 @@ export default async function Home() {
   }}
 />
 
-      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-13 sm:px-8 lg:px-12">
         <div className="relative flex flex-col gap-10 py-12 lg:py-16">
           <div className="absolute inset-0 overflow-hidden rounded-xl">
