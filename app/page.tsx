@@ -14,6 +14,9 @@ const articleTypeLabels: Record<string, string> = {
   ranking: "RANKING",
   guide: "PORADNIK",
 };
+
+export const revalidate = 60;
+
 export default async function Home() {
   const articles = await client.fetch(articlesQuery);
   return (
