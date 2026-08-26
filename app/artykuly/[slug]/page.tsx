@@ -11,6 +11,7 @@ import FAQAccordion from "@/app/components/FAQAccordion"
 import { getTableOfContents } from "@/lib/tableOfContents"
 import TableOfContents from "@/app/components/TableOfContents"
 import ProsCons from "@/app/components/ProsCons"
+import ComparisonTable from "@/app/components/ComparisonTable"
 import RecommendedFor from "@/app/components/RecommendedFor"
 import RelatedArticles from "@/app/components/RelatedArticles"
 import type { Metadata } from "next"
@@ -121,6 +122,68 @@ const portableTextComponents = {
       />
     </div>
   ),
+
+  comparisonTable: ({ value }: any) => (
+  <ComparisonTable
+    title={value.title}
+    productA={value.productA}
+    productB={value.productB}
+    rows={value.rows ?? []}
+  />
+),
+
+  prosCons: ({ value }: any) => (
+  <section className="my-14 rounded-2xl border border-zinc-800/70 bg-zinc-900/70 p-6">
+    <h2
+      id="plusy-i-minusy"
+      className="text-2xl font-bold tracking-tight text-white"
+    >
+      Plusy i minusy
+    </h2>
+
+    {value.pros?.length > 0 && (
+      <div className="mt-10">
+        <h3 className="text-lg font-semibold text-white">
+          Plusy
+        </h3>
+
+        <ul className="mt-4 space-y-3">
+          {value.pros.map((item: string, index: number) => (
+            <li key={index} className="flex items-start gap-3">
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
+              <span className="text-zinc-300">
+                {item}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {value.cons?.length > 0 && (
+      <>
+        <div className="my-8 h-px bg-zinc-800" />
+
+        <div>
+          <h3 className="text-lg font-semibold text-white">
+            Minusy
+          </h3>
+
+          <ul className="mt-4 space-y-3">
+            {value.cons.map((item: string, index: number) => (
+              <li key={index} className="flex items-start gap-3">
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-red-400" />
+                <span className="text-zinc-300">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </>
+    )}
+  </section>
+),
 },
 }
 
@@ -197,17 +260,30 @@ const relatedArticles = await client.fetch(
 )
 console.log("Related articles:", relatedArticles)
 
- const tableOfContents = [
-  ...getTableOfContents(article.body),
-  ...(article.recommendedFor
-    ? [
-        {
-          level: "h2",
-          title: article.recommendedFor.title,
-        },
-      ]
-    : []),
-]
+ const tableOfContents = getTableOfContents(
+  article.body,
+  [
+    ...(article.body?.some(
+      (block: any) => block._type === "prosCons"
+    )
+      ? [
+          {
+            level: "h2" as const,
+            title: "Plusy i minusy",
+          },
+        ]
+      : []),
+
+    ...(article.recommendedFor
+      ? [
+          {
+            level: "h2" as const,
+            title: article.recommendedFor.title,
+          },
+        ]
+      : []),
+  ]
+)
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -355,9 +431,6 @@ const articleSchema = {
       />
     </article>
 
-    <div className="mt-16">
-  <ProsCons />
-</div>
 
 <div className="mt-12">
   {article.recommendedFor && (

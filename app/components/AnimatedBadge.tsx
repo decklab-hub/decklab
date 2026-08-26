@@ -21,11 +21,13 @@ export default function AnimatedBadge({
     if (!ref.current) return;
 
     const update = () => {
-      setSize({
-        width: ref.current!.offsetWidth,
-        height: ref.current!.offsetHeight,
-      });
-    };
+  if (!ref.current) return;
+
+  setSize({
+    width: ref.current.offsetWidth,
+    height: ref.current.offsetHeight,
+  });
+};
 
     update();
 

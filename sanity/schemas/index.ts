@@ -8,6 +8,7 @@ import { tag } from './documents/tag'
 import { seo } from './objects/seo'
 import { imageWithAlt } from './objects/imageWithAlt'
 import { prosCons } from './objects/prosCons'
+import { comparisonTable } from './objects/comparisonTable'
 import { faqItem } from "./objects/faqItem";
 import { review } from "./objects/review";
 import { reviewScore } from "./objects/reviewScore";
@@ -21,6 +22,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imageWithAlt,
     product,
     prosCons,
+    comparisonTable,
     faqItem,
     review,
     reviewScore,

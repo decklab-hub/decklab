@@ -35,9 +35,9 @@ export default async function Home() {
   className="pointer-events-none absolute inset-0"
   style={{
     background: `
-  radial-gradient(circle at 92% 8%, rgba(245,158,11,.18), transparent 32%),
-  radial-gradient(circle at 82% 68%, rgba(251,191,36,.08), transparent 40%),
-  radial-gradient(circle at 15% 100%, rgba(245,158,11,.05), transparent 50%)
+      radial-gradient(circle at 92% 8%, rgba(59,130,246,.10), transparent 32%),
+      radial-gradient(circle at 82% 68%, rgba(59,130,246,.045), transparent 40%),
+      radial-gradient(circle at 15% 100%, rgba(59,130,246,.025), transparent 50%)
     `,
   }}
 />

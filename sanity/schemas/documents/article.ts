@@ -71,6 +71,10 @@ export const article = defineType({
 },
 
 {
+  type: 'comparisonTable',
+},
+
+{
   type: 'imageWithAlt',
 },
 
