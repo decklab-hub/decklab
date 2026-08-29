@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Praktyczne poradniki dla DJs — od wyboru sprzętu i konfiguracji setupu po pierwsze kroki za konsoletą.",
 
   alternates: {
-    canonical: "https://decklab.pl/poradniki",
+    canonical: "https://www.decklab.pl/poradniki",
   },
 }
 

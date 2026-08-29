@@ -10,6 +10,14 @@ const articleTypeLabels: Record<string, string> = {
   guide: "PORADNIK",
 }
 
+const articleTypePaths: Record<string, string> = {
+  news: "aktualnosci",
+  review: "testy",
+  comparison: "porownania",
+  ranking: "rankingi",
+  guide: "poradniki",
+}
+
 type Props = {
   article: any
   variant?: "default" | "compact"
@@ -22,11 +30,15 @@ export default function ArticleCard({
 
 const isCompact = variant === "compact"
 
+const articlePath = articleTypePaths[article.articleType]
+  ? `/${articleTypePaths[article.articleType]}/${article.slug.current}`
+  : `/artykuly/${article.slug.current}`
+
 if (isCompact) {
   return (
     <article className="group rounded-xl border border-zinc-800/70 bg-zinc-900/70 p-5 transition-all duration-300 hover:border-zinc-700">
       <Link
-        href={`/artykuly/${article.slug.current}`}
+        href={articlePath}
         className="relative block aspect-video overflow-hidden rounded-lg"
       >
         <Image
@@ -61,7 +73,7 @@ if (isCompact) {
 
       <div className="mt-4">
         <Link
-          href={`/artykuly/${article.slug.current}`}
+          href={articlePath}
           className="text-sm font-medium text-blue-300 hover:text-blue-200"
         >
           Czytaj →
@@ -85,7 +97,7 @@ if (isCompact) {
   `}
 >
       <Link
-  href={`/artykuly/${article.slug.current}`}
+  href={articlePath}
   className="relative block aspect-video overflow-hidden rounded-lg"
 >
   <Image
@@ -147,7 +159,7 @@ if (isCompact) {
       </p>
 
       <Link
-        href={`/artykuly/${article.slug.current}`}
+        href={articlePath}
         className="text-sm font-medium text-blue-300 hover:text-blue-200"
       >
         Czytaj →

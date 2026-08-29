@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Rankingi sprzętu DJ-skiego przygotowane na podstawie praktycznych testów, porównań i doświadczenia.",
 
   alternates: {
-    canonical: "https://decklab.pl/rankingi",
+    canonical: "https://www.decklab.pl/rankingi",
   },
 }
 

@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     google: "1mMaLeuViNBUHC89fBzv-dcdGJfkeAKLy_tpKLm4jok",
   },
 
-  metadataBase: new URL("https://decklab.pl"),
+  metadataBase: new URL("https://www.decklab.pl"),
 
   openGraph: {
     title: "DeckLab | Testy sprzętu DJ-skiego, rankingi i poradniki",
     description:
       "Testy, porównania i praktyczne poradniki dotyczące kontrolerów, mixerów, gramofonów i akcesoriów dla DJ-ów.",
-    url: "https://decklab.pl",
+    url: "https://www.decklab.pl",
     siteName: "DeckLab",
     locale: "pl_PL",
     type: "website",

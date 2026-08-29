@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Niezależne testy sprzętu DJ-skiego. Sprawdzamy kontrolery, miksery, gramofony i inne urządzenia w praktyce.",
 
   alternates: {
-    canonical: "https://decklab.pl/testy",
+    canonical: "https://www.decklab.pl/testy",
   },
 }
 

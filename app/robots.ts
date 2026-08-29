@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://decklab.pl/sitemap.xml',
+    sitemap: 'https://www.decklab.pl/sitemap.xml',
   }
 }

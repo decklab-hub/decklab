@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Najnowsze informacje ze świata sprzętu DJ-skiego, oprogramowania i branży DJ-skiej.",
 
   alternates: {
-    canonical: "https://decklab.pl/aktualnosci",
+    canonical: "https://www.decklab.pl/aktualnosci",
   },
 }
 

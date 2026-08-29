@@ -10,15 +10,27 @@ const articleTypeLabels: Record<string, string> = {
   guide: "PORADNIK",
 }
 
+const articleTypePaths: Record<string, string> = {
+  news: "aktualnosci",
+  review: "testy",
+  comparison: "porownania",
+  ranking: "rankingi",
+  guide: "poradniki",
+}
+
 type Props = {
   article: any
 }
 
 export default function FeaturedArticleCard({ article }: Props) {
+  const articlePath = articleTypePaths[article.articleType]
+    ? `/${articleTypePaths[article.articleType]}/${article.slug.current}`
+    : `/artykuly/${article.slug.current}`
+
   return (
     <article className="group grid gap-8 lg:grid-cols-2 lg:items-center">
       <Link
-  href={`/artykuly/${article.slug.current}`}
+  href={articlePath}
   className="relative block aspect-video overflow-hidden rounded-xl"
 >
   <Image
@@ -49,7 +61,7 @@ export default function FeaturedArticleCard({ article }: Props) {
         </p>
 
         <Link
-          href={`/artykuly/${article.slug.current}`}
+          href={articlePath}
           className="inline-flex text-base font-medium text-blue-300 transition hover:text-blue-200"
         >
           Czytaj artykuł →
