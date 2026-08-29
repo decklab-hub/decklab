@@ -45,6 +45,7 @@ if (isCompact) {
           src={urlFor(article.mainImage.image).width(1200).height(675).url()}
           alt={article.mainImage.alt}
           fill
+          sizes="(max-width: 768px) calc(100vw - 88px), (max-width: 1280px) 45vw, 30vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
@@ -104,6 +105,7 @@ if (isCompact) {
     src={urlFor(article.mainImage.image).width(800).height(450).url()}
     alt={article.mainImage.alt}
     fill
+    sizes="(max-width: 768px) calc(100vw - 96px), (max-width: 1280px) 45vw, 30vw"
     className="
       object-cover
       transition-all
