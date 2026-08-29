@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import CategoryPage from "@/app/components/CategoryPage"
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Porównania sprzętu DJ-skiego | DeckLab",
   description:
